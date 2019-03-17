@@ -3,17 +3,9 @@ var uncool = require('cool-ascii-faces');
 var express = require('express');
 var app = express();
 
-app.set('port', (process.env.PORT || 5003));
+app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
-
-const { Pool } = require('pg');
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: true
-});
-
-
 
 // views is directory for all template files
 app.set('views', __dirname + '/views');
