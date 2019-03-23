@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-    <title>React App</title>
+		<title>three.js webgl - particles - sprites</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -24,30 +24,23 @@
 				color:#fff;
 				position: absolute;
 				top: 0px; width: 100%;
-				padding: 0px;
+				padding: 5px;
 				z-index:100;
 			}
 
 		</style>
 	</head>
-    
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet"> 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  
 	<body>
 
 		<div id="info">
-        
-        <div id="root"></div>
+			<a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - webgl particle sprites example -
+			snowflakes by <a href="Sketch_of_snow_crystal_by_Ren%C3%A9_Descartes.jpg">Ren&eacute;  Descartes</a>
 		</div>
 
-		<script src="build/three.js"></script>
+		<script src="../build/three.js"></script>
 
-        
-		<script src="examples/js/Detector.js"></script>
-		<script src="examples/js/libs/stats.min.js"></script>
+		<script src="js/Detector.js"></script>
+		<script src="js/libs/stats.min.js"></script>
 
 		<script>
 
@@ -72,23 +65,17 @@
 				camera.position.z = 1000;
 
 				scene = new THREE.Scene();
-				scene.fog = new THREE.FogExp2( 0x180518, 0.0018 );
-                scene.background = new THREE.Color( 0x180518 );
+				scene.fog = new THREE.FogExp2( 0x000000, 0.0008 );
 
 				geometry = new THREE.Geometry();
 
 				var textureLoader = new THREE.TextureLoader();
-                
-                var tex_path = "examples/textures/sprites/"
-                var tex_name = "particle_star2_Y";
-                var tex_ext = ".png"
-                var tex_template = tex_path + tex_name + tex_ext
-                
-				var sprite1 = textureLoader.load( tex_template );
-				var sprite2 = textureLoader.load( tex_template );
-				var sprite3 = textureLoader.load( tex_template );
-				var sprite4 = textureLoader.load( tex_template );
-				var sprite5 = textureLoader.load( tex_template );
+
+				var sprite1 = textureLoader.load( "textures/sprites/snowflake1.png" );
+				var sprite2 = textureLoader.load( "textures/sprites/snowflake2.png" );
+				var sprite3 = textureLoader.load( "textures/sprites/snowflake3.png" );
+				var sprite4 = textureLoader.load( "textures/sprites/snowflake4.png" );
+				var sprite5 = textureLoader.load( "textures/sprites/snowflake5.png" );
 
 				for ( i = 0; i < 10000; i ++ ) {
 
@@ -114,8 +101,7 @@
 					color  = parameters[i][0];
 					sprite = parameters[i][1];
 					size   = parameters[i][2];
-                    sprite.center.x = .5;
-                    sprite.center.y = .5;
+
 					materials[i] = new THREE.PointsMaterial( { size: size, map: sprite, blending: THREE.AdditiveBlending, depthTest: false, transparent : true } );
 					materials[i].color.setHSL( color[0], color[1], color[2] );
 
@@ -134,12 +120,12 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 
-				//stats = new Stats();
-				//container.appendChild( stats.dom );
+				stats = new Stats();
+				container.appendChild( stats.dom );
 
-				//document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				//document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-				//document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
 				//
 
@@ -199,7 +185,7 @@
 				requestAnimationFrame( animate );
 
 				render();
-				//stats.update();
+				stats.update();
 
 			}
 
@@ -211,12 +197,13 @@
 				camera.position.y += ( - mouseY - camera.position.y ) * 0.05;
 
 				camera.lookAt( scene.position );
-                
+
 				for ( i = 0; i < scene.children.length; i ++ ) {
 
 					var object = scene.children[ i ];
 
 					if ( object instanceof THREE.Points ) {
+
 						object.rotation.y = time * ( i < 4 ? i + 1 : - ( i + 1 ) );
 
 					}
@@ -227,7 +214,6 @@
 
 					color = parameters[i][0];
 
-					materials[i].map.rotation = 10*time;
 					h = ( 360 * ( color[0] + time ) % 360 ) / 360;
 					materials[i].color.setHSL( h, color[1], color[2] );
 
@@ -239,6 +225,5 @@
 
 
 		</script>
-	.
-    </body>
+	</body>
 </html>

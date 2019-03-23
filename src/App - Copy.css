@@ -70,8 +70,7 @@ z-index:4;
     filter: blur(10px);
 }
 .header_img_bg{
-position:fixed;
-transform: translate(15%,7%);
+position:absolute;
 top:-100px;
 z-index:4;
     opacity:.90;
@@ -132,7 +131,6 @@ color:#f7b;
 margin:auto;
     vertical-align:middle;
     font: small-caps bold 34px/1 Yu Gothic;
-    font-family: Yu Gothic, 'Sawarabi Mincho', sans-serif;
     filter:drop-shadow(-2px 2px 2px #f5f);
 }
 
@@ -156,18 +154,6 @@ animation: lotaterate linear 25s infinite;
 opacity:.20;
 }
 
-.kaihatu_chuu_msg{
-position:fixed;
-padding:0;
-margin:0;
-border:0;
-top:50%;
-text-align:center;
-    z-index:110;
-    font-size:75px;
-    transform: translate(-50%,0%);
-}
-
 .nav_bar{
 position:fixed;
 padding:0;
@@ -180,7 +166,6 @@ height:6%;
 .gridderator{
     display:flex;
     width:100%;
-    height:150%;
     padding:0;
     margin:0;
     border:0;
@@ -191,33 +176,24 @@ height:6%;
 }
 
 .gridderator_sub{
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-origin: border-box;
+    background:#538;
+    background-image:btn_off.png;
+    width:120px;
+    height:50px;
+    margin:0;
+    padding:0;
+    border-color:#313;
+    border-style:solid;
+    border-width:5px;
+    border-radius:35px;
     z-index:5;
-}
-.gridderator_sub2{
-    text-align:center;
-    height:50%;
-    width:80%;
-    transform: translate(0%,-25%);
-    
-    z-index:5;
-}
-.gridderator_sub_img{
-    float:left;
-    width:100%;
-    z-index:5;
-    margin:auto;
-    text-align:center;
 }
 .option_text{
     color:#e7e;
-    font: small-caps bold 12px/1;
-    font-family: Ayumu, 'Sawarabi Mincho', sans-serif;
+    font: small-caps bold 12px/1 Ayumu;
     text-align:center;
-    margin:auto;
-    transform: translate(0%,-50%);
+    
+    transform: translate(0%,95%);
     filter:drop-shadow(-1px 1px 7px #f00);
     z-index:5;
 }
@@ -310,12 +286,11 @@ background: radial-gradient(#fbf,70%,#fff);
 
 }
 .atext_2{
-    font: small-caps bold 14px/1;
-    font-family: Ayumu, 'Sawarabi Mincho', sans-serif;
+    font: small-caps bold 14px/1 Ayumu;
     text-align:center;
     color:#213;
-    font-size:18px;
-    transform: translate(0%,-10%);
+    font-size:20px;
+    height:0px;
     filter:drop-shadow(-2px 2px 2px #f5f);
 }
     
