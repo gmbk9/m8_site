@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Nav_bar from './components/nav_bar.js';
+import NavBar from './components/nav_bar.js';
 import Test_component from './components/test_component.js';
 //import logo from './logo.svg';
 import './App.css';
@@ -14,12 +14,35 @@ class App extends Component {
         super(props);
         this.state = {viewing:"main"};
         this.main_page = this.main_page.bind(this);
+        this.kokohadoko = this.kokohadoko.bind(this);
+        this.yokuaru = this.yokuaru.bind(this);
+        this.ishou = this.ishou.bind(this);
+        this.about_game = this.about_game.bind(this);
+        this.about_3d = this.about_3d.bind(this);
+        this.gifts = this.gifts.bind(this);
+        this.other = this.other.bind(this);
         this.syasin = this.syasin.bind(this);
+        this.kaihatu_chuu = this.kaihatu_chuu.bind(this);
         this.pages = ["main","kokohadoko","yokuaru","yokunai","ishou","syasin","about_game","about_3d","gifts","other"]
-        this.page_funcs = [this.main_page,this.main_page,"yokuaru","yokunai","ishou","syasin","about_game","about_3d","gifts","other"]
-        this.page_dict = {"main":this.main_page,"syasin":this.syasin};
+        this.page_funcs = [this.main_page,this.kokohadoko,this.yokuaru,this.yokunai,this.ishou,this.syasin,this.about_game,this.about_3d,this.gifts,this.other]
+        this.page_dict = {"main":this.main_page,"kokohadoko":this.kokohadoko,"syasin":this.syasin};
     }
-  kokohadoko(){};
+  kokohadoko(){
+    return (
+        <div className="Appb">
+        <NavBar currently_viewing={this.state.viewing} parent={this} />
+            <img className="introduction_img" src={"532211627362362545.png"} />
+            
+            <div className="introduction_div">
+                <div className="introduction_div2">
+                    <span className="introduction_div3">
+                        <p className="introduction_text">まあ、こんな感じの場所です。</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+  };
   yokuaru(){};
   yokunai(){};
   ishou(){};
@@ -30,7 +53,7 @@ class App extends Component {
   main_page(){
       return (
       <div className="App">
-      <Nav_bar parent={this} />
+      <NavBar currently_viewing={this.state.viewing} parent={this} />
       
       <div className="header0">
       </div>
@@ -66,8 +89,8 @@ class App extends Component {
   syasin() {
       return (
       <div className="App">
+      <NavBar currently_viewing={this.state.viewing} parent={this} />
       <div className="overlay"></div> 
-            <Nav_bar parent={this} />
       
         <div className="aria_img_div">
             <img className="aria2" src="325215123623156133.png" />
@@ -148,7 +171,7 @@ class App extends Component {
   kaihatu_chuu(){
       return(
         <div className="App">
-            <Nav_bar parent={this} />
+            <NavBar currently_viewing={this.state.viewing} parent={this} />
             <span className="kaihatu_chuu_msg">開発中(´･ω･`)</span>
         </div>
       );
