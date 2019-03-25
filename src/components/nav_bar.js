@@ -48,7 +48,7 @@ class NavBar extends Component {
   
     let nav_bar_clicked = ()=>{
     }
-  
+    //todo: create the nav bar with props directly indicating their on state
     return (
   <div className="nav_bar" onClick={nav_bar_clicked}>
         <div className="gridderator_bg">
